@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: ai-agent
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:postgresql://pgm-2zeoujn789tn63zf9o.rwlb.rds.aliyuncs.com/yu_ai_agent
+    username: my_user
+    password: Wat12345678
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: gemma3:1b
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536 # 在不确定向量维度的情况下，不要指定dimensions配置，否则报错（数据库列的精度）
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+    mcp:
+      client:
+        sse:
+          #request-timeout: 600000可以设置，不设置也没事，新的包已经默认了大值
+          connections:
+            server1:
+              url: http://localhost:8127
+#        stdio:
+#          servers-configuration: classpath:mcp-servers.json
+
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+
+# springdoc-openapi??????
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.wang.aiagent.controller
+# knife4j???????????????
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
+
+
+# searchApi
+search-api:
+  api-key: cTSKosfu5nfJnDK6CbXKpPaC

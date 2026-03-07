@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ai-agent-local
+  ai:
+    dashscope:
+      api-key: sk-eddc26fdd2254437bf9a7efa1d7f72ba
+      chat:
+        options:
+          model: qwen-plus
