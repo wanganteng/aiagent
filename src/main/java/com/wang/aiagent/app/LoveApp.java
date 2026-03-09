@@ -40,10 +40,10 @@ public class LoveApp {
             "恋爱状态询问沟通、习惯差异引发的矛盾；已婚状态询问家庭责任与亲属关系处理的问题。" +
             "引导用户详述事情经过、对方反应及自身想法，以便给出专属解决方案。";
 
-    public LoveApp(ChatModel dashscopeChatModel) {
-
+    public LoveApp(ChatModel ollamaChatModel) {
+        //AI恋爱大师模型注入：dashscopeChatModel,ollamaChatModel
         // 打印实际类型
-        log.info("ChatModel类型: {}", dashscopeChatModel.getClass().getName());
+        log.info("AI恋爱大师ChatModel类型: {}", ollamaChatModel.getClass().getName());
 
         //初始化基于二进制文件的对话记忆
         String fileDir = System.getProperty("user.dir")+"/chat-memory";
@@ -55,7 +55,7 @@ public class LoveApp {
         //自定义Advisor要保证单一职责，执行顺序，高效处理(耗时)，边界处理(异常)
         //MessageChatMemoryAdvisor将对话历史作为一些列独立的消息添加到提示中，保留原始对话的完整结构。PromptChatMemoryAdvisor直接将对话拼接，会失去原始的边界
         //ChatMemory则负责对话的存储
-        chatClient = ChatClient.builder(dashscopeChatModel)
+        chatClient = ChatClient.builder(ollamaChatModel)
                 .defaultSystem(SYSTEM_PROMPT)
                 .defaultAdvisors(
                         new MessageChatMemoryAdvisor(chatMemory),
@@ -203,6 +203,7 @@ public class LoveApp {
 
 
 
+    //如果调用的第三方的mcp服务器，把mcp模式改为stdio传统模式，增加mcp.json配置文件(需要第三方付费的api-key),即可看到工具被集成到toolCallbackProvider类里面
     @Resource
     private ToolCallbackProvider toolCallbackProvider;
 

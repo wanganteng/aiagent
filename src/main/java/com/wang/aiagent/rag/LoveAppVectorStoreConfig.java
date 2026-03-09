@@ -23,6 +23,8 @@ public class LoveAppVectorStoreConfig {
     @Resource
     private MyKeywordEnricher myKeywordEnricher;
 
+
+    //参数可以使用百炼的向量转换模型dashscopeEmbeddingModel或者ollama的向量转换模型ollamaEmbeddingModel
     @Bean
     VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
         //SimpleVectorStore实现了SimpleVectorStore接口，所以有写入文档的能力

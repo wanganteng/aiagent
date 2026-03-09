@@ -3,6 +3,7 @@ package com.wang.aiagent.controller;
 import com.wang.aiagent.agent.YuManus;
 import com.wang.aiagent.app.LoveApp;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.tool.ToolCallback;
 import org.springframework.ai.tool.ToolCallbackProvider;
@@ -18,6 +19,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/ai")
+@Slf4j
 public class AiController {
 
     @Resource
@@ -31,7 +33,7 @@ public class AiController {
 
 
     @Resource
-    private ChatModel dashscopeChatModel;
+    private ChatModel ollamaChatModel;
 
     @GetMapping("/love_app/chat/sync")
     public String doChatWithLoveAppSync(String message, String chatId) {
@@ -87,7 +89,10 @@ public class AiController {
      */
     @GetMapping("/manus/chat")
     public SseEmitter doChatWithManus(String message) {
-        YuManus yuManus = new YuManus(allTools, toolCallbackProvider,dashscopeChatModel);
+        //AI超级智能体模型注入：dashscopeChatModel，ollamaChatModel
+        // 打印实际类型
+        log.info("AI超级智能体ChatModel类型: {}", ollamaChatModel.getClass().getName());
+        YuManus yuManus = new YuManus(allTools, toolCallbackProvider,ollamaChatModel);
         return yuManus.runStream(message);
     }
 
