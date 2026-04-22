@@ -70,11 +70,6 @@ public abstract class BaseAgent {
                 // 单步执行
                 String stepResult = step();
 
-                // 每一步 step 执行完都要检查是否陷入循环
-                //if (isStuck()) {
-                //    handleStuckState();
-                //}
-
                 String result = "Step " + stepNumber + ": " + stepResult;
                 results.add(result);
             }
@@ -209,14 +204,14 @@ public abstract class BaseAgent {
     /**
      * 处理陷入循环的状态
      */
-    public abstract void handleStuckState();
+    //public abstract void handleStuckState();
 
     /**
      * 检查代理是否陷入循环
      *
      * @return 是否陷入循环
      */
-    public abstract boolean isStuck();
+    //public abstract boolean isStuck();
 
 
 

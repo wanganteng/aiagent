@@ -64,6 +64,7 @@ public class AiController {
                         // 处理每条消息
                         chunk -> {
                             try {
+                               //这时候就返回了，不是等到最后一步return才返回到前端
                                 emitter.send(chunk);
                             } catch (IOException e) {
                                 emitter.completeWithError(e);

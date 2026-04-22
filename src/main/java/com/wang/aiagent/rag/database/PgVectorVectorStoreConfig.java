@@ -1,5 +1,6 @@
-package com.wang.aiagent.rag;
+package com.wang.aiagent.rag.database;
 
+import com.wang.aiagent.rag.local.LoveAppDocumentLoader;
 import jakarta.annotation.Resource;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -14,6 +15,9 @@ import java.util.List;
 import static org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgDistanceType.COSINE_DISTANCE;
 import static org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexType.HNSW;
 
+
+
+//pg向量数据库
 @Configuration
 public class PgVectorVectorStoreConfig {
 
@@ -21,8 +25,9 @@ public class PgVectorVectorStoreConfig {
     private LoveAppDocumentLoader loveAppDocumentLoader;
 
 
-    //@Bean
+    @Bean
     public VectorStore pgVectorVectorStore(JdbcTemplate jdbcTemplate, EmbeddingModel dashscopeEmbeddingModel) {
+        //重复插入，需要写sql判断表是否为空，为空才插入
         VectorStore vectorStore = PgVectorStore.builder(jdbcTemplate, dashscopeEmbeddingModel)
                 .dimensions(1536)                    // 不要盲目设置
                 .distanceType(COSINE_DISTANCE)       // Optional: defaults to COSINE_DISTANCE

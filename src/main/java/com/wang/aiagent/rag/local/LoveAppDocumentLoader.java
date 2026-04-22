@@ -1,4 +1,4 @@
-package com.wang.aiagent.rag;
+package com.wang.aiagent.rag.local;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;

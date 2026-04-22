@@ -1,4 +1,4 @@
-package com.wang.aiagent.rag;
+package com.wang.aiagent.rag.remote;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
 import com.alibaba.cloud.ai.dashscope.rag.DashScopeDocumentRetriever;

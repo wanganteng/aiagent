@@ -11,7 +11,7 @@ spring:
     ollama:
       base-url: http://localhost:11434
       chat:
-        model: qwen:14b-chat
+        model: qwen3:8b
     vectorstore:
       pgvector:
         index-type: HNSW
@@ -60,4 +60,4 @@ logging:
 
 # searchApi
 search-api:
-  api-key: cTSKosfu5nfJnDK6CbXKpPaC
+  api-key: jDyCSNJLx7L5jnmQcFQRMCS4

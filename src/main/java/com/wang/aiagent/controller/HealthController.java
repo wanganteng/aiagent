@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/health")
 public class HealthController {
 
+    /**
+     * 测试Knife4j文档生成工具
+     * @return
+     */
     @GetMapping
     public String healthCheck() {
         return "ok";

@@ -58,42 +58,42 @@ public abstract class ReActAgent extends BaseAgent {
     /**
      * 处理陷入循环的状态
      */
-    @Override
-    public void handleStuckState() {
-        String stuckPrompt = "观察到重复响应。考虑新策略，避免重复已尝试过的无效路径。";
-        setNextStepPrompt(stuckPrompt + "\n" + (getNextStepPrompt() != null ? getNextStepPrompt() : ""));
-        System.out.println("Agent detected stuck state. Added prompt: " + stuckPrompt);
-    }
+//    @Override
+//    public void handleStuckState() {
+//       String stuckPrompt = "观察到重复响应。考虑新策略，避免重复已尝试过的无效路径。";
+//        setNextStepPrompt(stuckPrompt + "\n" + (getNextStepPrompt() != null ? getNextStepPrompt() : ""));
+//        System.out.println("Agent detected stuck state. Added prompt: " + stuckPrompt);
+//    }
 
     /**
      * 检查代理是否陷入循环
      *
      * @return 是否陷入循环
      */
-    @Override
-    public boolean isStuck() {
-        List<Message> messages = getMessageList();
-        if (messages.size() < 2) {
-            return false;
-        }
-
-        Message lastMessage = messages.get(messages.size() - 1);
-        if (lastMessage.getText() == null || lastMessage.getText().isEmpty()) {
-            return false;
-        }
-
-        // 计算重复内容出现次数
-        int duplicateCount = 0;
-        for (int i = messages.size() - 2; i >= 0; i--) {
-            Message msg = messages.get(i);
-            if (msg.getMessageType() == MessageType.ASSISTANT &&
-                    lastMessage.getText().equals(msg.getText())) {
-                duplicateCount++;
-            }
-        }
-
-        return duplicateCount >= this.duplicateThreshold;
-    }
+    //@Override
+//    public boolean isStuck() {
+//        List<Message> messages = getMessageList();
+//        if (messages.size() < 2) {
+//            return false;
+//        }
+//
+//        Message lastMessage = messages.get(messages.size() - 1);
+//        if (lastMessage.getText() == null || lastMessage.getText().isEmpty()) {
+//            return false;
+//        }
+//
+//        // 计算重复内容出现次数
+//        int duplicateCount = 0;
+//        for (int i = messages.size() - 2; i >= 0; i--) {
+//            Message msg = messages.get(i);
+//            if (msg.getMessageType() == MessageType.ASSISTANT &&
+//                    lastMessage.getText().equals(msg.getText())) {
+//                duplicateCount++;
+//            }
+//        }
+//
+//        return duplicateCount >= this.duplicateThreshold;
+//    }
 
 
 

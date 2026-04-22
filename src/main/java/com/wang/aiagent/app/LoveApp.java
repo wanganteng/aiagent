@@ -40,8 +40,21 @@ public class LoveApp {
             "恋爱状态询问沟通、习惯差异引发的矛盾；已婚状态询问家庭责任与亲属关系处理的问题。" +
             "引导用户详述事情经过、对方反应及自身想法，以便给出专属解决方案。";
 
+
+    /*可以创建一个工厂类，通过工厂类的方法来实现实例化，在工厂里面获取到所有注入到项目中的chatModelBean,
+    这样子在调用createLoveApp时，传入的什么类型的model就能动态切换不同的model了
+    @Autowired
+    private Map<String, ChatModel> chatModels;
+    public LoveApp createLoveApp(String modelName) {
+        ChatModel chatModel = chatModels.get(modelName);
+        if (chatModel == null) {
+            throw new IllegalArgumentException("找不到模型: " + modelName);
+        }
+
+        return new LoveApp(chatModel, modelName);
+    }*/
     public LoveApp(ChatModel ollamaChatModel) {
-        //AI恋爱大师模型注入：dashscopeChatModel,ollamaChatModel
+        //AI恋爱大师模型自动注入：dashscopeChatModel,ollamaChatModel
         // 打印实际类型
         log.info("AI恋爱大师ChatModel类型: {}", ollamaChatModel.getClass().getName());
 

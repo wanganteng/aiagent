@@ -1,16 +1,12 @@
 package com.wang.aiagent.app;
 
-import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
-import com.alibaba.cloud.ai.dashscope.rag.DashScopeDocumentRetriever;
-import com.alibaba.cloud.ai.dashscope.rag.DashScopeDocumentRetrieverOptions;
 import com.wang.aiagent.demo.rag.MultiQueryExpanderDemo;
-import com.wang.aiagent.rag.LoveAppDocumentLoader;
+import com.wang.aiagent.rag.local.LoveAppDocumentLoader;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.rag.Query;
-import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.test.context.SpringBootTest;
