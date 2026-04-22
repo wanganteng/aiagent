@@ -7,16 +7,16 @@ const routes = [
     component: () => import('../views/Home.vue'),
     meta: {
       title: '首页 - AI超级智能体应用平台',
-      description: 'AI超级智能体应用平台提供AI恋爱大师和AI超级智能体服务，满足您的各种AI对话需求'
+      description: 'AI超级智能体应用平台提供AI旅游助手和AI超级智能体服务，满足您的各种AI对话需求'
     }
   },
   {
-    path: '/love-master',
-    name: 'LoveMaster',
-    component: () => import('../views/LoveMaster.vue'),
+    path: '/travel-master',
+    name: 'TravelMaster',
+    component: () => import('../views/TravelMaster.vue'),
     meta: {
-      title: 'AI恋爱大师 - AI超级智能体应用平台',
-      description: 'AI恋爱大师是AI超级智能体应用平台的专业情感顾问，帮你解答各种恋爱问题，提供情感建议'
+      title: 'AI环球探险家 - AI超级智能体应用平台',
+      description: 'AI环球探险家是AI超级智能体应用平台的专业出行顾问'
     }
   },
   {

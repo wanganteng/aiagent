@@ -4,7 +4,7 @@ spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:postgresql://pgm-2zeoujn789tn63zf9o.rwlb.rds.aliyuncs.com/yu_ai_agent
+    url: jdbc:postgresql://pgm-wz9tw8bdyyoy1o4k.rwlb.rds.aliyuncs.com/yu_ai_agent
     username: my_user
     password: Wat12345678
   ai:
@@ -22,11 +22,11 @@ spring:
       client:
         sse:
           #request-timeout: 600000可以设置，不设置也没事，新的包已经默认了大值
-          connections:
-            server1:
-              url: http://localhost:8127
-#        stdio:
-#          servers-configuration: classpath:mcp-servers.json
+          #connections:
+            #server1:
+              #url: http://localhost:8127
+          stdio:
+            servers-configuration: classpath:mcp-servers.json
 
 
 server:

@@ -14,18 +14,17 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class LoveAppDocumentLoader {
+public class TravelAppDocumentLoader {
 
     private final ResourcePatternResolver resourcePatternResolver;
 
-    LoveAppDocumentLoader(ResourcePatternResolver resourcePatternResolver) {
+    TravelAppDocumentLoader(ResourcePatternResolver resourcePatternResolver) {
         this.resourcePatternResolver = resourcePatternResolver;
     }
 
     public List<Document> loadMarkdowns() {
         List<Document> allDocuments = new ArrayList<>();
         try {
-            // 这里可以修改为你要加载的多个 Markdown 文件的路径模式
             Resource[] resources = resourcePatternResolver.getResources("classpath:document/*.md");
             for (Resource resource : resources) {
                 String fileName = resource.getFilename();

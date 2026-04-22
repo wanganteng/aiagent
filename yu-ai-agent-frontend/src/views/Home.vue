@@ -9,12 +9,12 @@
     </div>
     
     <div class="apps-container">
-      <div class="app-card" @click="navigateTo('/love-master')">
+      <div class="app-card" @click="navigateTo('/travel-master')">
         <div class="card-glow"></div>
-        <div class="app-icon love-icon">❤️</div>
+        <div class="app-icon travel-icon">🧳</div>
         <div class="app-info">
-          <div class="app-title">AI恋爱大师</div>
-          <div class="app-desc">智能情感顾问，帮你解答恋爱烦恼</div>
+          <div class="app-title">AI环球探险家</div>
+          <div class="app-desc">足不出户，探索全球奇景，发现你的下一个旅行目的地</div>
         </div>
         <div class="app-button">
           <span class="btn-text">立即体验</span>
@@ -27,7 +27,7 @@
         <div class="app-icon robot-icon">🤖</div>
         <div class="app-info">
           <div class="app-title">AI超级智能体</div>
-          <div class="app-desc">全能型AI助手，解决各类专业问题</div>
+          <div class="app-desc">全能型AI助手，生成丰富的旅游计划pdf</div>
         </div>
         <div class="app-button">
           <span class="btn-text">立即体验</span>
@@ -57,11 +57,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'AI超级智能体应用平台提供AI恋爱大师和AI超级智能体服务，满足您的各种AI对话需求'
+      content: 'AI超级智能体应用平台提供AI旅游助手和AI超级智能体服务，满足您的各种AI对话需求'
     },
     {
       name: 'keywords',
-      content: 'AI智能体,AI应用,AI恋爱大师,AI助手,智能对话,AI超级智能体,首页'
+      content: 'AI智能体,AI应用,AI旅游助手,AI助手,智能对话,AI超级智能体,首页'
     }
   ]
 })
@@ -262,7 +262,7 @@ const navigateTo = (path) => {
   z-index: 1;
 }
 
-.love-icon {
+.travel-icon {
   background: linear-gradient(135deg, #ff007a, #ff5722);
   box-shadow: 0 0 20px rgba(255, 0, 122, 0.5);
 }

@@ -1,7 +1,7 @@
 package com.wang.aiagent.controller;
 
 import com.wang.aiagent.agent.YuManus;
-import com.wang.aiagent.app.LoveApp;
+import com.wang.aiagent.app.TravelApp;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatModel;
@@ -23,7 +23,7 @@ import java.io.IOException;
 public class AiController {
 
     @Resource
-    private LoveApp loveApp;
+    private TravelApp travelApp;
 
     @Resource
     private ToolCallback[] allTools;
@@ -35,31 +35,31 @@ public class AiController {
     @Resource
     private ChatModel ollamaChatModel;
 
-    @GetMapping("/love_app/chat/sync")
-    public String doChatWithLoveAppSync(String message, String chatId) {
-        return loveApp.doChat(message, chatId);
+    @GetMapping("/travel_app/chat/sync")
+    public String doChatWithTravelAppSync(String message, String chatId) {
+        return travelApp.doChat(message, chatId);
     }
 
-    @GetMapping(value = "/love_app/chat/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> doChatWithLoveAppSSE(String message, String chatId) {
-        return loveApp.doChatByStream(message, chatId);
+    @GetMapping(value = "/travel_app/chat/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> doChatWithTravelAppSSE(String message, String chatId) {
+        return travelApp.doChatByStream(message, chatId);
     }
 
-    @GetMapping(value = "/love_app/chat/server_sent_event")
-    public Flux<ServerSentEvent<String>> doChatWithLoveAppServerSentEvent(String message, String chatId) {
-        return loveApp.doChatByStream(message, chatId)
+    @GetMapping(value = "/travel_app/chat/server_sent_event")
+    public Flux<ServerSentEvent<String>> doChatWithTravelAppServerSentEvent(String message, String chatId) {
+        return travelApp.doChatByStream(message, chatId)
                 .map(chunk -> ServerSentEvent.<String>builder()
                         .data(chunk)
                         .build());
     }
 
 
-    @GetMapping("/love_app/chat/sse/emitter")
-    public SseEmitter doChatWithLoveAppSseEmitter(String message, String chatId) {
+    @GetMapping("/travel_app/chat/sse/emitter")
+    public SseEmitter doChatWithTravelAppSseEmitter(String message, String chatId) {
         // 创建一个超时时间较长的 SseEmitter
         SseEmitter emitter = new SseEmitter(180000L); // 3分钟超时
         // 获取 Flux 数据流并直接订阅
-        loveApp.doChatByStream(message, chatId)
+        travelApp.doChatByStream(message, chatId)
                 .subscribe(
                         // 处理每条消息
                         chunk -> {

@@ -1,6 +1,6 @@
 package com.wang.aiagent.rag.database;
 
-import com.wang.aiagent.rag.local.LoveAppDocumentLoader;
+import com.wang.aiagent.rag.local.TravelAppDocumentLoader;
 import jakarta.annotation.Resource;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -22,10 +22,10 @@ import static org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexT
 public class PgVectorVectorStoreConfig {
 
     @Resource
-    private LoveAppDocumentLoader loveAppDocumentLoader;
+    private TravelAppDocumentLoader travelAppDocumentLoader;
 
 
-    @Bean
+    //@Bean
     public VectorStore pgVectorVectorStore(JdbcTemplate jdbcTemplate, EmbeddingModel dashscopeEmbeddingModel) {
         //重复插入，需要写sql判断表是否为空，为空才插入
         VectorStore vectorStore = PgVectorStore.builder(jdbcTemplate, dashscopeEmbeddingModel)
@@ -40,7 +40,7 @@ public class PgVectorVectorStoreConfig {
 
 
         //加载文档(可以分块插入)
-        List<Document> documents = loveAppDocumentLoader.loadMarkdowns();
+        List<Document> documents = travelAppDocumentLoader.loadMarkdowns();
         vectorStore.add(documents);
 
         return vectorStore;
